@@ -2,28 +2,27 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Travel App Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">北海道微醺之行<title>titlee
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   
     <style>
         :root {
-            --bg-color: #f0f0f0; /* 淺灰背景 */
-            --card-color: #ffffff; /* 白色卡片 */
-            --accent-color: #333333; /* 深灰強調色 */
-            --text-on-dark: #ffffff; /* 深背景文字 */
-            --text-on-light: #000000; /* 淺背景文字 */
-            --menu-bg: #dddddd; /* 中灰菜單背景 */
-            --weather-gradient: linear-gradient(135deg, #cccccc 0%, #888888 100%); /* 灰色漸層 */
-            --highlight-gold: #666666; /* 中灰點綴 */
+            --bg-color: #ffd3e6; /* 柔粉 - 主色調，代表花海寧靜 */
+            --card-color: #fff0f5; /* 淡粉變體，避免過度對比 */
+            --accent-color: #fda9d8; /* 薰衣草粉 - 輔助色，強調薰衣草紫色 */
+            --text-on-dark: #5c0d09; /* 深灰 - 用於淺背景上的文字 */
+            --text-on-light: #cee159; /* 綠 - 用於深背景上的文字 */
+            --menu-bg: #ffd3e6; /* 柔粉菜單背景 */
+            --weather-gradient: linear-gradient(135deg, #fda9d8 0%, #ffd3e6 100%); /* 粉紅漸層 */
+            --highlight-gold: #c5a35f; /* 淡紫點綴 */
         }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body {
             font-family: "Montserrat", sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-on-light);
+            color: var(--text-on-dark);
             margin: 0; padding: 0;
             height: 100vh;
             display: flex; flex-direction: column; overflow: hidden;
@@ -31,16 +30,16 @@
         /* --- Header --- */
         header {
             padding: 15px 20px;
-            background-color: var(--bg-color);
-            border-bottom: 1px solid var(--menu-bg);
+            background-color: rgba(255, 211, 230, 0.98); /* 柔粉變體 */
+            border-bottom: 1px solid rgba(253, 169, 216, 0.2);
             position: sticky; top: 0; z-index: 100;
             display: flex; justify-content: space-between; align-items: center;
             height: 60px;
         }
-        header h1 { margin: 0; font-size: 1.2rem; letter-spacing: 1px; color: var(--accent-color); }
+        header h1 { margin: 0; font-size: 1.2rem; font-family: "Playfair Display", serif; letter-spacing: 1px; color: var(--highlight-gold); }
       
         .header-icons { display: flex; gap: 20px; align-items: center; }
-        .header-btn { color: var(--text-on-light); font-size: 1.2rem; cursor: pointer; text-decoration: none; position: relative;}
+        .header-btn { color: var(--text-on-dark); font-size: 1.2rem; cursor: pointer; text-decoration: none; position: relative;}
         .fan-btn i { color: var(--accent-color); }
         /* --- Global Date Selector --- */
         .date-selector-container {
@@ -55,16 +54,16 @@
         .date-selector::-webkit-scrollbar { display: none; }
       
         .date-chip {
-            background: var(--menu-bg);
+            background: rgba(253, 169, 216, 0.2);
             padding: 8px 12px; border-radius: 20px;
-            white-space: nowrap; font-size: 0.85rem; cursor: pointer; color: var(--text-on-light);
+            white-space: nowrap; font-size: 0.85rem; cursor: pointer; color: var(--text-on-dark);
             display: flex; flex-direction: column; align-items: center; min-width: 55px;
             transition: all 0.2s ease;
             border: 1px solid transparent;
         }
         .date-chip.active {
-            background: var(--accent-color); color: var(--text-on-dark);
-            box-shadow: 0 0 10px rgba(51,51,51,0.3); transform: scale(1.05);
+            background: var(--accent-color); color: #fff;
+            box-shadow: 0 0 10px rgba(253, 169, 216, 0.3); transform: scale(1.05);
         }
         /* --- Main Content --- */
         main { flex: 1; overflow-y: hidden; position: relative; }
@@ -90,11 +89,11 @@
         .sub-page.open { transform: translateX(0); }
         .sub-header {
             padding: 15px 20px; background: var(--menu-bg);
-            border-bottom: 1px solid var(--accent-color);
+            border-bottom: 1px solid rgba(206, 225, 89, 0.2);
             display: flex; align-items: center; gap: 15px;
         }
         .back-btn { font-size: 1.2rem; color: var(--accent-color); background: none; border: none; padding: 5px; cursor: pointer;}
-        .sub-header h2 { margin: 0; font-size: 1.1rem; color: var(--text-on-light); }
+        .sub-header h2 { margin: 0; font-size: 1.1rem; font-family: "Playfair Display", serif; color: var(--highlight-gold); }
         .sub-content {
             flex: 1; overflow-y: auto; padding: 20px;
             -webkit-overflow-scrolling: touch;
@@ -103,61 +102,61 @@
         .timeline-container { padding: 0 20px; }
         .timeline-item {
             position: relative; padding-left: 25px; padding-bottom: 30px;
-            border-left: 2px solid var(--accent-color);
+            border-left: 2px solid rgba(253, 169, 216, 0.3);
         }
         .timeline-item:last-child { border-left: 2px solid transparent; padding-bottom: 0; }
         .timeline-item::before {
             content: ''; position: absolute; left: -6px; top: 18px;
             width: 10px; height: 10px; background: var(--accent-color);
-            border-radius: 50%; box-shadow: 0 0 0 4px var(--bg-color);
+            border-radius: 50%; box-shadow: 0 0 0 4px rgba(255, 211, 230, 0.5);
         }
         .card {
-            background-color: var(--card-color); color: var(--text-on-light);
-            border-radius: 8px;
+            background-color: var(--card-color); color: var(--text-on-dark);
+            border-radius: 16px;
             padding: 16px; margin-bottom: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             cursor: pointer;
             position: relative;
         }
         .card:active { transform: scale(0.98); }
         .card-time { font-size: 0.85rem; color: var(--accent-color); font-weight: 700; display: block; margin-bottom: 6px; }
-        .card-title { font-size: 1.1rem; font-weight: 700; margin: 0 0 8px 0; line-height: 1.4; padding-right: 10px; }
+        .card-title { font-size: 1.1rem; font-weight: 700; margin: 0 0 8px 0; font-family: "Playfair Display", serif; line-height: 1.4; padding-right: 10px; color: var(--highlight-gold); }
         .card-price {
             position: absolute; bottom: 12px; right: 15px;
-            font-weight: bold; color: var(--accent-color); font-size: 0.9rem;
-            background: var(--menu-bg); padding: 2px 6px; border-radius: 4px;
+            font-weight: bold; color: var(--text-on-light); font-size: 0.9rem;
+            background: rgba(253, 169, 216, 0.3); padding: 2px 6px; border-radius: 4px;
         }
         .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 5px; max-width: 70%; }
-        .card-tag { font-size: 0.7rem; background: var(--menu-bg); padding: 3px 8px; border-radius: 4px; color: var(--text-on-light); }
-        .card-tag.highlight { background: var(--accent-color); color: var(--text-on-dark); border: 1px solid var(--accent-color); }
-        .card-tag.tips { background: var(--menu-bg); color: var(--text-on-light); }
-        .card-tag.alert { background: var(--accent-color); color: var(--text-on-dark); border: 1px solid var(--accent-color); font-weight: bold;}
+        .card-tag { font-size: 0.7rem; background: rgba(255, 211, 230, 0.5); padding: 3px 8px; border-radius: 4px; color: var(--text-on-dark); }
+        .card-tag.highlight { background: rgba(253, 169, 216, 0.4); color: #fff; border: 1px solid var(--accent-color); }
+        .card-tag.tips { background: rgba(206, 225, 89, 0.4); color: #fff; }
+        .card-tag.alert { background: rgba(92, 13, 9, 0.4); color: #fff; border: 1px solid var(--text-on-dark); font-weight: bold;}
         /* --- Weather Styles --- */
         .weather-card {
             background: var(--weather-gradient);
-            border-radius: 8px; padding: 25px; margin: 20px;
-            text-align: center; color: var(--text-on-dark);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 16px; padding: 25px; margin: 20px;
+            text-align: center; color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         .weather-main { display: flex; justify-content: space-around; align-items: center; margin: 20px 0; }
         .weather-icon { font-size: 3.5rem; }
         .weather-temp { font-size: 3rem; font-weight: 300; }
-        .weather-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; }
+        .weather-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; }
         .w-item { font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
         /* --- Shopping Styles --- */
-        .shopping-section-title { margin: 0 0 10px 0; color: var(--accent-color); border-bottom: 1px solid var(--menu-bg); padding-bottom: 5px;}
-        .shopping-group { margin-bottom: 25px; background: var(--menu-bg); padding: 15px; border-radius: 8px; }
+        .shopping-section-title { font-family: "Playfair Display", serif; margin: 0 0 10px 0; color: var(--accent-color); border-bottom: 1px solid rgba(253, 169, 216, 0.3); padding-bottom: 5px;}
+        .shopping-group { margin-bottom: 25px; background: rgba(253, 169, 216, 0.05); padding: 15px; border-radius: 12px; }
         /* --- Tools Grid --- */
         .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 10px; }
         .tool-btn {
-            background: var(--menu-bg); padding: 25px 15px;
-            border-radius: 8px; text-align: center;
-            border: 1px solid var(--accent-color); cursor: pointer;
+            background: rgba(253, 169, 216, 0.1); padding: 25px 15px;
+            border-radius: 16px; text-align: center;
+            border: 1px solid rgba(92, 13, 9, 0.1); cursor: pointer;
         }
         .tool-btn i { font-size: 2.2rem; color: var(--accent-color); margin-bottom: 12px; display: block; }
         /* --- Lists --- */
         .checklist-item {
-            background: var(--menu-bg); padding: 15px; margin-bottom: 12px;
+            background: rgba(253, 169, 216, 0.08); padding: 15px; margin-bottom: 12px;
             border-radius: 8px; display: flex; align-items: center; gap: 15px;
         }
         .checklist-item.checked { opacity: 0.5; }
@@ -169,12 +168,12 @@
             position: fixed; bottom: 0; width: 100%;
             background-color: var(--menu-bg);
             display: flex; justify-content: space-around;
-            padding: 10px 0 25px 0; border-top: 1px solid var(--accent-color);
+            padding: 10px 0 25px 0; border-top: 1px solid rgba(92, 13, 9, 0.2);
             z-index: 100;
         }
         .nav-item { color: var(--text-on-light); text-align: center; font-size: 0.75rem; cursor: pointer; width: 25%; }
         .nav-item i { display: block; font-size: 1.4rem; margin-bottom: 4px; }
-        .nav-item.active { color: var(--accent-color); }
+        .nav-item.active { color: var(--highlight-gold); }
         /* --- Modal --- */
         .modal {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -183,54 +182,54 @@
         }
         .modal.open { display: flex; }
         .modal-content {
-            background: var(--card-color); color: var(--text-on-light);
+            background: var(--card-color); color: var(--text-on-dark);
             width: 100%; max-width: 600px; max-height: 85vh;
-            border-radius: 8px 8px 0 0; padding: 25px;
+            border-radius: 20px 20px 0 0; padding: 25px;
             overflow-y: auto; animation: slideUp 0.3s ease;
             -webkit-overflow-scrolling: touch;
         }
         @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; color: var(--accent-color); cursor: pointer; }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; color: var(--text-on-light); cursor: pointer; }
       
         .info-row { margin: 12px 0; display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem; line-height: 1.6; }
         .info-row i { color: var(--accent-color); margin-top: 4px; width: 20px; text-align: center; }
         .note-box {
-            background: var(--menu-bg);
+            background: rgba(255, 211, 230, 0.5);
             border-left: 4px solid var(--accent-color);
             padding: 15px; margin: 20px 0; border-radius: 0 8px 8px 0;
-            font-size: 0.95rem; color: var(--text-on-light); line-height: 1.7;
+            font-size: 0.95rem; color: var(--text-on-dark); line-height: 1.7;
         }
         .link-btn {
-            display: inline-block; background: var(--menu-bg); color: var(--text-on-light);
+            display: inline-block; background: rgba(253, 169, 216, 0.3); color: var(--text-on-dark);
             padding: 6px 12px; border-radius: 4px; text-decoration: none;
-            font-size: 0.85rem; margin-top: 5px; border: 1px solid var(--accent-color);
+            font-size: 0.85rem; margin-top: 5px; border: 1px solid var(--menu-bg);
         }
         .action-btn {
             display: flex; justify-content: center; align-items: center; gap: 8px;
             width: 100%; padding: 14px; margin-top: 20px;
-            background: var(--accent-color); color: var(--text-on-dark);
-            text-decoration: none; border-radius: 8px;
+            background: var(--accent-color); color: white;
+            text-decoration: none; border-radius: 10px;
             font-weight: bold; font-size: 1rem; border: none; cursor: pointer;
         }
       
         /* Taxi Card */
         .taxi-card {
-            background: var(--card-color); color: var(--text-on-light); padding: 20px;
-            border: 1px solid var(--accent-color);
+            background: var(--card-color); color: var(--text-on-dark); padding: 20px;
+            border: 4px solid var(--highlight-gold);
             margin: 15px 0;
             text-align: center; border-radius: 8px;
         }
         /* Edit Form Styles */
         .edit-form { display: none; padding: 20px; background: rgba(0,0,0,0.5); position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 2500; justify-content: center; align-items: center; }
         .edit-form.open { display: flex; }
-        .edit-content { background: var(--card-color); color: var(--text-on-light); padding: 20px; border-radius: 8px; width: 90%; max-width: 400px; }
-        .edit-content input, .edit-content textarea { width: 100%; margin: 10px 0; padding: 8px; background: var(--menu-bg); border: 1px solid var(--accent-color); color: var(--text-on-light); }
-        .edit-content button { background: var(--accent-color); color: var(--text-on-dark); border: none; padding: 10px; width: 100%; cursor: pointer; }
+        .edit-content { background: var(--card-color); color: var(--text-on-dark); padding: 20px; border-radius: 10px; width: 90%; max-width: 400px; }
+        .edit-content input, .edit-content textarea { width: 100%; margin: 10px 0; padding: 8px; background: rgba(255, 211, 230, 0.3); border: 1px solid var(--menu-bg); color: var(--text-on-dark); }
+        .edit-content button { background: var(--accent-color); color: white; border: none; padding: 10px; width: 100%; cursor: pointer; }
     </style>
 </head>
 <body>
     <header>
-        <h1>Travel App Template</h1>
+        <h1>北海道微醺之行</h1>
         <div class="header-icons">
             <a href="googletranslate://" class="header-btn" title="Google Translate">
                 <i class="fa-solid fa-language"></i>
@@ -249,27 +248,27 @@
     <main>
         <div id="page-itinerary" class="page active">
             <div class="timeline-container" id="timeline-container" style="padding-top: 20px;"></div>
-            <div style="text-align:center; color:var(--accent-color); font-size:0.8rem; margin:30px 0;">平安喜樂 • 滿載而歸</div>
+            <div style="text-align:center; color:var(--text-on-light); font-size:0.8rem; margin:30px 0;">平安喜樂 • 滿載而歸</div>
         </div>
         <div id="page-map" class="page">
             <div id="map-container"></div>
-            <div style="position:absolute; bottom:90px; left:10px; background:var(--card-color); padding:8px 12px; border-radius:8px; color:var(--text-on-light); font-size:0.8rem; box-shadow:0 2px 5px rgba(0,0,0,0.1); pointer-events:none; z-index:999;">
+            <div style="position:absolute; bottom:90px; left:10px; background:rgba(255,211,230,0.9); padding:8px 12px; border-radius:8px; color:var(--text-on-dark); font-size:0.8rem; box-shadow:0 2px 5px rgba(0,0,0,0.1); pointer-events:none; z-index:999;">
                 <i class="fa-solid fa-location-dot" style="color:var(--accent-color)"></i> 顯示當日行程地點
             </div>
         </div>
         <div id="page-weather" class="page">
             <div style="padding: 20px;">
-                <h2 style="text-align:center; margin-bottom:10px;">當日天氣預報</h2>
+                <h2 style="font-family:'Playfair Display',serif; text-align:center; margin-bottom:10px;">當日天氣預報</h2>
                 <div id="weather-content"></div>
               
-                <div style="background:var(--menu-bg); padding:15px; border-radius:8px; margin:20px 0; display:flex; align-items:center; justify-content:space-between; border:1px solid var(--accent-color);">
+                <div style="background:rgba(253,169,216,0.1); padding:15px; border-radius:12px; margin:20px 0; display:flex; align-items:center; justify-content:space-between; border:1px solid rgba(92,13,9,0.1);">
                     <div>
                         <div style="font-weight:bold; color:var(--accent-color);"><i class="fa-solid fa-glass-water"></i> 水分補給 Check</div>
                         <div style="font-size:0.8rem; opacity:0.7; margin-top:4px;">喝酒前請先喝水</div>
                     </div>
                     <div style="display:flex; gap:15px; align-items:center;">
-                        <button onclick="addWater()" style="background:var(--accent-color); border:none; color:var(--text-on-dark); width:45px; height:45px; border-radius:50%; font-size:1.2rem; cursor:pointer;"><i class="fa-solid fa-plus"></i></button>
-                        <span id="water-count" style="font-size:2rem; min-width:30px; text-align:center;">0</span>
+                        <button onclick="addWater()" style="background:var(--accent-color); border:none; color:white; width:45px; height:45px; border-radius:50%; font-size:1.2rem; cursor:pointer;"><i class="fa-solid fa-plus"></i></button>
+                        <span id="water-count" style="font-size:2rem; font-family:'Playfair Display',serif; min-width:30px; text-align:center;">0</span>
                     </div>
                 </div>
                 <div class="note-box">
@@ -280,18 +279,18 @@
         </div>
         <div id="page-shopping" class="page">
             <div style="padding: 20px;">
-                <h2 style="text-align:center;">今日購物建議</h2>
+                <h2 style="font-family:'Playfair Display',serif; text-align:center;">今日購物建議</h2>
                 <p style="text-align:center; opacity:0.7; font-size:0.85rem; margin-bottom:20px;">根據當日行程地點推薦</p>
               
                 <div id="daily-shopping-list"></div>
-                <div style="margin-top:40px; border-top:1px solid var(--menu-bg); padding-top:20px;">
-                    <h3 style="color:var(--accent-color); font-size:1rem;">全行程購物清單 (General)</h3>
+                <div style="margin-top:40px; border-top:1px solid rgba(92,13,9,0.1); padding-top:20px;">
+                    <h3 style="color:var(--text-on-light); font-size:1rem;">全行程購物清單 (General)</h3>
                     <div id="general-shopping-container"></div>
                 </div>
             </div>
         </div>
         <div id="page-tools" class="page">
-            <h2 style="text-align:center; margin: 30px 0 20px 0;">旅人百寶箱</h2>
+            <h2 style="text-align:center; margin: 30px 0 20px 0; font-family:'Playfair Display',serif;">旅人百寶箱</h2>
             <div class="tools-grid">
                 <div class="tool-btn" onclick="openSubPage('hotel')">
                     <i class="fa-solid fa-bed"></i><span>酒店資訊</span>
@@ -313,13 +312,13 @@
                 </div>
             </div>
             <div style="text-align:center; margin-top:30px;">
-                <button onclick="history.back()" style="background:none; border:1px solid var(--accent-color); color:var(--text-on-light); padding:10px 20px; border-radius:8px;">關閉百寶箱</button>
+                <button onclick="history.back()" style="background:none; border:1px solid var(--text-on-light); color:var(--text-on-dark); padding:10px 20px; border-radius:20px;">關閉百寶箱</button>
             </div>
         </div>
         <div id="subpage-hotel" class="sub-page">
             <div class="sub-header"><button class="back-btn" onclick="closeSubPage('hotel')"><i class="fa-solid fa-arrow-left"></i></button><h2>酒店資訊</h2></div>
             <div class="sub-content">
-                <h3 style="color:var(--accent-color); margin-bottom:10px;">[酒店名稱範例]</h3>
+                <h3 style="color:var(--accent-color); font-family:'Playfair Display',serif; margin-bottom:10px;">[酒店名稱範例]</h3>
                 <div style="font-size:0.9rem; opacity:0.8; margin-bottom:20px;">[酒店簡介範例]</div>
               
                 <div class="note-box">
@@ -347,13 +346,13 @@
         <div id="subpage-rate" class="sub-page">
             <div class="sub-header"><button class="back-btn" onclick="closeSubPage('rate')"><i class="fa-solid fa-arrow-left"></i></button><h2>匯率換算</h2></div>
             <div class="sub-content" style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:80%;">
-                <div style="background: var(--menu-bg); padding: 20px; border-radius: 8px; width:100%;">
+                <div style="background: rgba(253,169,216,0.05); padding: 20px; border-radius: 12px; width:100%;">
                     <div style="display:flex; justify-content:flex-end; margin-bottom:10px;">
-                         <label style="font-size:0.8rem; color:var(--text-on-light);">匯率: <input type="number" id="rate-setting" value="0.052" step="0.001" style="width:60px; background:transparent; color:var(--text-on-light); border:1px solid var(--accent-color); text-align:center; border-radius:4px;"></label>
+                         <label style="font-size:0.8rem; color:var(--text-on-light);">匯率: <input type="number" id="rate-setting" value="0.052" step="0.001" style="width:60px; background:transparent; color:var(--text-on-dark); border:1px solid var(--menu-bg); text-align:center; border-radius:4px;"></label>
                     </div>
-                    <label>外幣</label><input type="number" id="jpy-input" placeholder="外幣" oninput="calcRate('jpy')" style="width: 100%; padding: 15px; margin: 10px 0; font-size: 1.2rem; background: var(--bg-color); border: 1px solid var(--accent-color); color: var(--text-on-light); border-radius: 8px; text-align: center;">
+                    <label>外幣</label><input type="number" id="jpy-input" placeholder="外幣" oninput="calcRate('jpy')" style="width: 100%; padding: 15px; margin: 10px 0; font-size: 1.2rem; background: rgba(255,211,230,0.3); border: 1px solid var(--menu-bg); color: var(--text-on-dark); border-radius: 8px; text-align: center;">
                     <div style="text-align:center; font-size:1.5rem; margin:10px 0; color:var(--accent-color);">⇅</div>
-                    <label>港幣 (HKD)</label><input type="number" id="hkd-input" placeholder="$" oninput="calcRate('hkd')" style="width: 100%; padding: 15px; margin: 10px 0; font-size: 1.2rem; background: var(--bg-color); border: 1px solid var(--accent-color); color: var(--text-on-light); border-radius: 8px; text-align: center;">
+                    <label>港幣 (HKD)</label><input type="number" id="hkd-input" placeholder="$" oninput="calcRate('hkd')" style="width: 100%; padding: 15px; margin: 10px 0; font-size: 1.2rem; background: rgba(255,211,230,0.3); border: 1px solid var(--menu-bg); color: var(--text-on-dark); border-radius: 8px; text-align: center;">
                 </div>
             </div>
         </div>
@@ -361,14 +360,14 @@
         <div id="subpage-safety" class="sub-page">
             <div class="sub-header"><button class="back-btn" onclick="closeSubPage('safety')"><i class="fa-solid fa-arrow-left"></i></button><h2>安全功能</h2></div>
             <div class="sub-content">
-                <div style="text-align: center; padding: 30px 20px; background: var(--weather-gradient); border-radius: 8px; margin-bottom: 20px;" onclick="sendSafetyMessage()">
-                    <i class="fa-brands fa-whatsapp" style="font-size:3rem; color:var(--text-on-dark); margin-bottom:15px;"></i>
+                <div style="text-align: center; padding: 30px 20px; background: linear-gradient(135deg, #fda9d8, #ffd3e6); border-radius: 16px; margin-bottom: 20px;" onclick="sendSafetyMessage()">
+                    <i class="fa-brands fa-whatsapp" style="font-size:3rem; color:white; margin-bottom:15px;"></i>
                     <h3 style="margin:0 0 10px 0;">一鍵報平安 (WhatsApp)</h3>
                     <p style="opacity:0.8; margin:0;">按此發送位置給家人</p>
                 </div>
                 <h3 style="border-bottom:1px solid var(--menu-bg); padding-bottom:10px; margin-top:30px;">緊急資訊</h3>
-                <div class="checklist-item" onclick="alert('緊急電話')"><i class="fa-solid fa-shield-halved" style="color:var(--accent-color);"></i><span>警察局: [號碼]</span></div>
-                <div class="checklist-item" onclick="alert('緊急電話')"><i class="fa-solid fa-truck-medical" style="color:var(--accent-color);"></i><span>救護/消防: [號碼]</span></div>
+                <div class="checklist-item" onclick="alert('110')"><i class="fa-solid fa-shield-halved" style="color:var(--accent-color);"></i><span>警察局: 110</span></div>
+                <div class="checklist-item" onclick="alert('119')"><i class="fa-solid fa-truck-medical" style="color:var(--accent-color);"></i><span>救護/消防: 119</span></div>
             </div>
         </div>
     </main>
@@ -385,9 +384,9 @@
             <div class="modal-body">
               
                 <div id="taxi-card" class="taxi-card" style="display:none;">
-                    <p style="font-size:0.8rem; color:var(--accent-color); margin:0 0 5px 0;">[給司機看的訊息]</p>
+                    <p style="font-size:0.8rem; color:var(--text-on-light); margin:0 0 5px 0;">[給司機看的訊息]</p>
                     <h2 id="taxi-address" style="font-size:1.5rem; margin:5px 0; font-weight:bold; line-height:1.2;"></h2>
-                    <p id="taxi-name" style="font-size:1rem; margin-top:5px; color:var(--text-on-light);"></p>
+                    <p id="taxi-name" style="font-size:1rem; margin-top:5px; color:var(--text-on-dark);"></p>
                 </div>
                 <div class="info-row"><i class="fa-regular fa-clock"></i><span id="modal-time">時間</span></div>
                 <div class="info-row"><i class="fa-solid fa-location-dot"></i><span id="modal-address">地址</span></div>
@@ -401,7 +400,7 @@
               
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:20px;">
                      <button class="action-btn" id="modal-map-btn" style="margin-top:0;"><i class="fa-solid fa-map-location-dot"></i> Google 導航</button>
-                     <button class="action-btn" onclick="toggleTaxiCard()" style="margin-top:0; background:var(--accent-color);"><i class="fa-solid fa-taxi"></i> 給司機看</button>
+                     <button class="action-btn" onclick="toggleTaxiCard()" style="margin-top:0; background:var(--text-on-light);"><i class="fa-solid fa-taxi"></i> 給司機看</button>
                 </div>
             </div>
         </div>
@@ -511,7 +510,7 @@
         function renderTimeline(dayKey) {
             const container = document.getElementById('timeline-container'); container.innerHTML = '';
             const dayTitle = document.createElement('h3'); dayTitle.style.marginBottom='20px';
-            dayTitle.innerHTML = `<span style="color:var(--accent-color);">${scheduleData[dayKey].date}</span>`;
+            dayTitle.innerHTML = `<span style="color:var(--accent-color); font-family:'Playfair Display',serif;">${scheduleData[dayKey].date}</span>`;
             container.appendChild(dayTitle);
             scheduleData[dayKey].events.forEach(event => {
                 const item = document.createElement('div'); item.className = 'timeline-item';
