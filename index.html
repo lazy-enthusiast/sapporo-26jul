@@ -177,7 +177,7 @@ const THEME_CONFIG = {
   textColor: "#2D2D2D", // 炭黑：精準
   textSubColor: "#64748B", // 鐵灰
   borderColor: "#E2E8F0",
-  // 加入 Playfair Display (標題) 與 Inter (內文)
+  // 字體：Playfair Display (標題) 與 Inter (內文)
   googleFontsUrl: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Sans+TC:wght@300;400;700&family=Playfair+Display:wght@600;800&display=swap",
   fontHeading: '"Playfair Display", "Noto Sans TC", serif',
   fontBody: '"Inter", "Noto Sans TC", sans-serif'
@@ -186,8 +186,8 @@ const THEME_CONFIG = {
 // 2. 🗓️ 旅程設定
 const CONFIG = {
   ui: {
-    browserTitle: "北境清冽・金水重塑",
-    headerTitle: "北境清冽・金水重塑",
+    browserTitle: "Hokkaido 2026",
+    headerTitle: "HOKKAIDO <span>2026</span>",
     homeTimezone: "Asia/Hong_Kong",
     homeTimeLabel: "HKG"
   },
@@ -211,18 +211,18 @@ const TRIP_INFO = {
   visa: {
     type: "日本短期滯在",
     number: "HKMA-EXEC-001",
-    note: "護照、VJW QR Code 已備份"
+    note: "VJW QR Code 已備份。"
   },
   flights: [
     {
       type: "去程", flight: "CX580", date: "06/29",
       dep: "HKG 09:15", arr: "CTS 15:00",
-      note: "無需早起。抵達後直奔小樽。", bookingRef: "CX-2026-GO"
+      note: "無需早起。20°C 乾爽空氣等著您。", bookingRef: "CX-2026-GO"
     },
     {
       type: "回程", flight: "CX581", date: "07/05",
       dep: "CTS 16:30", arr: "HKG 20:55",
-      note: "午後起飛。從容逛完市集再回機場。", bookingRef: "CX-2026-BACK"
+      note: "午後從容起飛，週一俐落復工。", bookingRef: "CX-2026-BACK"
     }
   ],
   hotels: [
@@ -230,18 +230,18 @@ const TRIP_INFO = {
       name: "小樽旅亭 藏群 (Kuramure)",
       address: "北海道小樽市朝里川温泉2-685",
       phone: "+81134515151",
-      note: "全包式服務 (All Inclusive)。"
+      note: "全包式 (All Inclusive)。黑車接送。"
     },
     {
-      name: "御宿 野乃 札幌薄野 (Onyado Nono)",
+      name: "御宿 野乃 札幌薄野",
       address: "北海道札幌市中央区南4条西4-1",
       phone: "+81112615489",
-      note: "全館榻榻米，進門需脫鞋。"
+      note: "全館榻榻米。進門即脫鞋。"
     }
   ],
   emergency: [
-    { name: "警察局", phone: "110" },
-    { name: "救護車", phone: "119" },
+    { name: "Wolt (外送)", phone: "App" },
+    { name: "GO (計程車)", phone: "App" },
     { name: "外交部急難救助", phone: "+81-80-1009-7179" }
   ]
 };
@@ -253,139 +253,184 @@ const USER_ITINERARY = {
       {
         "time": "15:00", "title": "抵達新千歲 (CTS)", "type": "交通",
         "address": "New Chitose Airport", "tags": ["CX580", "入境"], "moodColor": "#2D2D2D",
-        "note": "目標：斷開連結。JR 快速 Airport 號 (買 U-Seat 指定席) 往小樽築港。"
+        "note": "提取行李。目標：斷開香港公務連結。"
       },
       {
-        "time": "16:30", "title": "Check-in 藏群", "type": "住宿",
+        "time": "16:00", "title": "JR 快速 Airport", "type": "移動",
+        "address": "New Chitose Airport Station", "tags": ["U-Seat"], "moodColor": "#007AFF",
+        "note": "前往小樽築港站。務必加購 U-Seat 指定席 (1,590 JPY)，有冷氣且安靜。"
+      },
+      {
+        "time": "17:30", "title": "Check-in 藏群", "type": "住宿",
         "address": "北海道小樽市朝里川温泉2-685", "coords": [43.1465, 141.0536],
         "tags": ["全包式", "清空"], "moodColor": "#1A2E40",
-        "note": "旅館專車接送。換上浴衣，先喝一杯「北之錦」大吟釀。"
+        "note": "旅館專車接送。換上浴衣，先去 Bar 喝一杯冰鎮大吟釀。"
+      },
+      {
+        "time": "19:00", "title": "旅館旬味懷石", "type": "晚餐",
+        "address": "Kuramure Dining", "tags": ["All-inclusive"], "moodColor": "#B91C1C",
+        "note": "產地直送刺身與時令小菜。餐後至私人圖書館沉浸「金水能量」。"
       }
     ],
     "inspiration": [
-      { "title": "Plan B: 機場溫泉", "tag": "備案", "note": "若航班延誤趕不上接駁，直接在新千歲機場溫泉過夜 (10:00-翌日09:00)。", "type": "應變" }
+      { "title": "Plan B: 機場溫泉", "tag": "備案", "note": "若 JR 停駛，改住國內線 4F「新千歲機場溫泉」。", "type": "應變" }
     ],
-    "shopping": ["便利商店補給 (雖旅館全包，可買點隨身小物)"]
+    "shopping": ["無 (享受當下)"]
   },
   "day2": {
     "events": [
       {
-        "time": "10:00", "title": "藏群：徹底排毒", "type": "放鬆",
-        "address": "Kuramure", "tags": ["溫泉", "閱讀"], "moodColor": "#64748B",
-        "note": "利用圖書館、Bar 與大浴場。生理與心理的徹底清空。"
+        "time": "10:00", "title": "泉水洗禮 & 放鬆", "type": "體驗",
+        "address": "Kuramure", "tags": ["10/10靜謐"], "moodColor": "#64748B",
+        "note": "躲在旅館內。大浴場深層補充水能量。午餐可吃周邊蕎麥麵。"
       },
       {
-        "time": "15:00", "title": "專業按摩", "type": "體驗",
-        "address": "Kuramure Spa", "tags": ["預約制"], "moodColor": "#1A2E40",
-        "note": "下午時段預約，在此享受高 ROI 的身心重塑。"
+        "time": "14:30", "title": "深層精油按摩", "type": "體驗",
+        "address": "Kuramure Spa", "tags": ["預約制", "120mins"], "moodColor": "#1A2E40",
+        "note": "針對肩頸排毒，物理性「清空」。"
       },
       {
-        "time": "18:00", "title": "懷石料理 (旅館內)", "type": "美食",
-        "address": "Kuramure Dining", "tags": ["海鮮", "包含"], "moodColor": "#B91C1C",
-        "note": "北海道海鮮與精緻和食，專注於食材原味。"
+        "time": "16:30", "title": "閱讀與整理", "type": "工作",
+        "address": "Kuramure Library", "tags": ["邏輯框架"], "moodColor": "#A2845E",
+        "note": "整理 7 月面試的邏輯框架。晚餐享用主廚特製懷石 (Day 2 菜單)。"
       }
     ],
     "inspiration": [
-      { "title": "Plan B: 小樽藝術村", "tag": "備案", "note": "若想活動，搭接駁車去「似鳥美術館」。冷氣強，彩繪玻璃美，極度安靜。", "type": "景點" }
+      { "title": "Plan B: 小樽藝術村", "tag": "備案", "note": "若太悶，搭接駁車去「似鳥美術館」。冷氣極強，彩繪玻璃極美。", "type": "景點" }
     ],
-    "shopping": ["無 (享受當下)"]
+    "shopping": ["無"]
   },
   "day3": {
     "events": [
       {
-        "time": "11:00", "title": "退房 & 寄行李", "type": "移動",
-        "address": "Kuramure", "tags": ["宅急便"], "moodColor": "#2D2D2D",
-        "note": "將大行李直接寄往札幌「御宿野乃」，只帶隨身包去余市。"
+        "time": "11:00", "title": "JR 移動: 往余市", "type": "交通",
+        "address": "Otaru Station", "tags": ["函館本線"], "moodColor": "#2D2D2D",
+        "note": "退房後專車至小樽站。轉乘至余市 (370 JPY)。"
       },
       {
-        "time": "13:00", "title": "余市蒸餾所", "type": "考察",
+        "time": "11:30", "title": "余市蒸餾所", "type": "考察",
         "address": "北海道余市郡余市町黒川町7-6", "coords": [43.1884, 140.7834],
-        "tags": ["威士忌", "時光"], "moodColor": "#A2845E",
-        "note": "試飲高年份原酒，感受「時間沈澱的價值」。需事前預約。"
+        "tags": ["威士忌", "時間"], "moodColor": "#A2845E",
+        "note": "試飲高年份原酒，感受「時間的力量」。午餐去「柿崎商店」吃海鮮丼。"
       },
       {
         "time": "17:00", "title": "Check-in 御宿野乃", "type": "住宿",
         "address": "北海道札幌市中央区南4条西4-1", "coords": [43.0556, 141.3533],
-        "tags": ["薄野", "榻榻米"], "moodColor": "#1A2E40",
-        "note": "Dormy Inn 旗艦版。享受免費宵夜拉麵與溫泉。"
+        "tags": ["薄野", "脫鞋"], "moodColor": "#1A2E40",
+        "note": "地鐵「薄野站」4號出口步行2分。全館榻榻米，腳步清爽。"
+      },
+      {
+        "time": "19:30", "title": "居酒屋 富士", "type": "晚餐",
+        "address": "札幌市中央区南5条西4", "tags": ["烤花鯽魚"], "moodColor": "#B91C1C",
+        "note": "真正的高性價比名店。炸雞與烤魚必點。"
       }
     ],
     "inspiration": [
-      { "title": "Plan B: 札幌啤酒博物館", "tag": "雨天", "note": "若下大雨不去余市，改去啤酒博物館 (Factory Line 直達巴士)。", "type": "室內" }
+      { "title": "Plan B: 啤酒博物館", "tag": "雨天", "note": "若余市太遠或下雨，改去札幌啤酒博物館 (札幌站北口搭直達巴士)。", "type": "室內" }
     ],
-    "shopping": ["余市限定威士忌 (小瓶裝)"]
+    "shopping": ["余市原酒 (小瓶)", "便利商店零食"]
   },
   "day4": {
     "events": [
       {
         "time": "12:00", "title": "午餐: 鮨 一柳", "type": "美食",
-        "address": "北海道札幌市中央区南4条西4", "coords": [43.0570, 141.3500],
-        "tags": ["Omakase", "江戶前"], "moodColor": "#B91C1C",
-        "note": "高性價比午餐。不需過度應酬，專注於魚料熟成度與米飯溫度的平衡。"
+        "address": "札幌市中央区大通西", "coords": [43.0570, 141.3500],
+        "tags": ["Omakase", "精準"], "moodColor": "#B91C1C",
+        "note": "12貫握壽司。性價比之王，透過精準度校準精英氣場。"
       },
       {
         "time": "14:30", "title": "古道具 十一月", "type": "古物",
-        "address": "札幌市中央区南2条西8丁目", "tags": ["選物", "靜謐"], "moodColor": "#A2845E",
-        "note": "老闆選物眼光冷靜。尋找一件適合放在主管辦公室的「能量物」。"
+        "address": "札幌市中央区南2条西8丁目", "tags": ["選物", "冷靜"], "moodColor": "#A2845E",
+        "note": "尋找一件「鎮定辦公桌」的能量小物。接著可去 Brown Books Vintage。"
+      },
+      {
+        "time": "19:00", "title": "奧芝商店 湯咖哩", "type": "晚餐",
+        "address": "札幌站周邊", "tags": ["蝦湯底"], "moodColor": "#B91C1C",
+        "note": "飽足感強，代謝體內濕氣。回飯店後可享用免費夜鳴拉麵。"
       }
     ],
     "inspiration": [
-      { "title": "Plan B: 近代美術館", "tag": "備案", "note": "若古物店休息，去北海道立近代美術館 (西18丁目站)。", "type": "藝術" }
+      { "title": "Plan B: 近代美術館", "tag": "備案", "note": "若古物店沒開，去北海道立近代美術館 (西18丁目站)。", "type": "藝術" }
     ],
-    "shopping": ["辦公室擺件 (古董)"]
+    "shopping": ["辦公室能量小物"]
   },
   "day5": {
     "events": [
       {
-        "time": "11:00", "title": "SHIRO 旗艦店", "type": "購物",
-        "address": "札幌市砂川本店 (或市區店)", "tags": ["香氛", "零殘忍"], "moodColor": "#64748B",
-        "note": "挑選「冷冽木質調」香水，打造專業氣場。"
+        "time": "12:00", "title": "午餐: 鮨 菜之花", "type": "美食",
+        "address": "札幌市中央区", "tags": ["威嚴感"], "moodColor": "#B91C1C",
+        "note": "職人威嚴感極強的午間握壽司。"
       },
       {
-        "time": "18:00", "title": "晚餐: 和牛 備長", "type": "美食",
-        "address": "札幌市中央区", "tags": ["白老牛", "炭火"], "moodColor": "#B91C1C",
-        "note": "頂級白老牛，不搞花俏表演，專注於肉質與炭火的直球對決。"
+        "time": "14:30", "title": "SHIRO 旗艦店", "type": "購物",
+        "address": "札幌站 JR Tower", "tags": ["香氛", "面試"], "moodColor": "#64748B",
+        "note": "選購「冷冽木質調」香氛，作為 7 月面試的戰袍氣味。"
+      },
+      {
+        "time": "16:30", "title": "506070mansion", "type": "設計",
+        "address": "札幌市北3条東10丁目", "tags": ["計程車"], "moodColor": "#A2845E",
+        "note": "建議搭乘 GO 計程車前往，避開步行流汗。非常有質感的設計店。"
+      },
+      {
+        "time": "19:30", "title": "晚餐: 和牛 備長", "type": "美食",
+        "address": "札幌市中央区南3条西2", "tags": ["白老牛"], "moodColor": "#B91C1C",
+        "note": "頂級白老牛炭火燒烤。直球對決。"
       }
     ],
     "inspiration": [
-      { "title": "Plan B: 大丸百貨美食", "tag": "外帶", "note": "不想排隊？大丸 B1 買頂級毛蟹便當，回飯店榻榻米上享用。", "type": "美食" }
+      { "title": "Plan B: 大丸百貨", "tag": "外帶", "note": "不想排隊？大丸 B1 買頂級毛蟹便當，回飯店配清酒。", "type": "美食" }
     ],
     "shopping": ["SHIRO 香水", "身體乳"]
   },
   "day6": {
     "events": [
       {
-        "time": "10:30", "title": "Akarenga Terrace", "type": "市集",
-        "address": "札幌市中央区北2条西4", "tags": ["手作", "紅磚"], "moodColor": "#A2845E",
-        "note": "尋找職人手作皮革或木工，低物欲但高質感的生活道具。"
+        "time": "11:00", "title": "Akarenga Terrace 市集", "type": "市集",
+        "address": "札幌市中央区北2条西4", "tags": ["職人", "手作"], "moodColor": "#A2845E",
+        "note": "尋找皮革或木工件。利用「地下步行空間」移動，全程冷氣。"
       },
       {
-        "time": "14:00", "title": "地下空間 Chi-Ka-Ho", "type": "散步",
-        "address": "札幌站前地下步行空間", "tags": ["避暑", "展覽"], "moodColor": "#64748B",
-        "note": "全程冷氣，連結札幌站與薄野。常有小型藝術展或市集。"
+        "time": "13:30", "title": "午餐: 根室花丸", "type": "美食",
+        "address": "Stellar Place 6F", "tags": ["迴轉壽司"], "moodColor": "#B91C1C",
+        "note": "先去抽號碼牌。性價比極高。"
+      },
+      {
+        "time": "15:30", "title": "JR Tower T38", "type": "景觀",
+        "address": "JR Tower 38F", "tags": ["高空", "戰略"], "moodColor": "#64748B",
+        "note": "安靜俯瞰，寫下回港後的首週工作清單。"
+      },
+      {
+        "time": "19:00", "title": "晚餐: 貴水 (Takami)", "type": "晚餐",
+        "address": "札幌市南6条西3", "tags": ["割烹"], "moodColor": "#B91C1C",
+        "note": "安靜的割烹料理，無表演感。"
       }
     ],
     "inspiration": [
-      { "title": "Plan B: JR Tower T38", "tag": "景觀", "note": "若覺得地下街吵雜，去 T38 展望台 (38樓) 俯瞰城市，安靜獨處。", "type": "高空" }
+      { "title": "Plan B: Wolt 外送", "tag": "備案", "note": "若市集人多，留酒店溫泉，叫 Wolt 外送海鮮丼。", "type": "放鬆" }
     ],
-    "shopping": ["職人皮件", "木製餐具"]
+    "shopping": ["職人皮件"]
   },
   "day7": {
     "events": [
       {
-        "time": "08:00", "title": "北海道神宮 頓宮 蚤之市", "type": "古物",
+        "time": "08:00", "title": "頓宮 蚤之市", "type": "古物",
         "address": "札幌市中央区南2条東3丁目", "coords": [43.0578, 141.3585],
-        "tags": ["老件", "早晨"], "moodColor": "#A2845E",
-        "note": "清晨清涼時分前往。在回港前完成能量定礎。挖寶老件。"
+        "tags": ["老件", "清晨"], "moodColor": "#A2845E",
+        "note": "清晨清冷空氣中挖寶。回港前的能量定礎。"
       },
       {
-        "time": "14:30", "title": "抵達新千歲機場", "type": "交通",
-        "address": "New Chitose Airport", "tags": ["CX581", "回程"], "moodColor": "#2D2D2D",
-        "note": "最後採買 (海鮮、甜點)。16:30 起飛，20:55 抵達香港，王者歸來。"
+        "time": "11:30", "title": "午餐: 拉麵 信玄", "type": "美食",
+        "address": "札幌市南6条西8丁目", "tags": ["信州味噌"], "moodColor": "#B91C1C",
+        "note": "最後一碗拉麵。"
+      },
+      {
+        "time": "14:15", "title": "前往機場 (CTS)", "type": "交通",
+        "address": "New Chitose Airport", "tags": ["CX581"], "moodColor": "#2D2D2D",
+        "note": "JR 快速 Airport (U-Seat)。16:30 起飛，20:55 抵達香港。"
       }
     ],
     "inspiration": [
-      { "title": "Plan B: 機場購物", "tag": "雨天", "note": "若下雨無法逛室外市集，提早去機場國內線 2F 掃貨。", "type": "購物" }
+      { "title": "Plan B: 機場購物", "tag": "雨天", "note": "若下雨，提早去機場國內線 2F 掃貨 (六花亭、北菓樓)。", "type": "購物" }
     ],
     "shopping": ["六花亭 (自用)", "北菓樓"]
   }
@@ -397,7 +442,7 @@ const PHRASE_DATA = [
     category: "應對與購物",
     items: [
       { term_primary: "領収書をください", term_secondary: "請給我收據 (報帳用)", term_pronounce: "Ryoshusho kudasai" },
-      { term_primary: "これは免税になりますか", term_secondary: "這個可以退稅嗎", term_pronounce: "Menzei dekimasuka" },
+      { term_primary: "U-Seat はどこですか", term_secondary: "U-Seat 指定席在哪裡", term_pronounce: "U-Seat wa doko" },
       { term_primary: "静かな席をお願いします", term_secondary: "請給我安靜的位子", term_pronounce: "Shizukana seki onegai" }
     ]
   },
@@ -405,7 +450,7 @@ const PHRASE_DATA = [
     category: "交通",
     items: [
       { term_primary: "新千歳空港まで", term_secondary: "去新千歲機場", term_pronounce: "Shin-Chitose made" },
-      { term_primary: "指定席はありますか", term_secondary: "有指定席(U-Seat)嗎", term_pronounce: "Shiteiseki arimasuka" }
+      { term_primary: "タクシーを呼んでください", term_secondary: "請幫我叫計程車", term_pronounce: "Taxi yonde kudasai" }
     ]
   }
 ];
